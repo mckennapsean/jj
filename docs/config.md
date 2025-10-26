@@ -1747,6 +1747,33 @@ eol-conversion = "input-output"
       [`gitoxide`][gitoxide-is-binary] or [`git`][git-is-binary]. Jujutsu
       doesn't plan to align the binary detection logic with git.
 
+## Performance Tracing
+
+You can enable performance tracing to generate a trace file in the Chrome Trace
+Event format, which can be viewed in tools like `chrome://tracing` or
+[Perfetto](https://ui.perfetto.dev/).
+
+This is controlled by the `JJ_TRACE` environment variable.
+
+- **`JJ_TRACE`**: If set, tracing is enabled.
+  - If the value is a non-empty string, it is used as the output filename.
+  - If the value is an empty string, a default filename is generated (e.g.,
+    `jj-trace-<timestamp>.json`).
+
+- **`JJ_TRACE_INCLUDE_ARGS`**: If set to any value, additional arguments (like
+  function parameters) will be included in the trace, which can increase the
+  file size but provide more detail.
+
+Example usage:
+
+```bash
+# Generate a trace file named 'jj-trace-my-command.json'
+JJ_TRACE=jj-trace-my-command.json jj log
+
+# Generate a trace file with a default name and include function arguments
+JJ_TRACE= JJ_TRACE_INCLUDE_ARGS=1 jj status
+```
+
 ## Ways to specify `jj` config: details
 
 ### User config files
