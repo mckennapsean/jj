@@ -793,8 +793,8 @@ fn classify_bookmark_update(
             Err(RejectedBookmarkUpdateReason {
                 message: format!("Refusing to create new remote bookmark {remote_symbol}"),
                 hint: Some(
-                    "Use --allow-new to push new bookmark. Use --remote to specify the remote to \
-                     push to."
+                    "Use --allow-new (-N) to push new bookmark. Use --remote to specify the \
+                     remote to push to."
                         .to_owned(),
                 ),
             })

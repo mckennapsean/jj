@@ -48,7 +48,7 @@ $ jj commit -m 'feat(bar): add support for bar'
 # on the working-copy commit's *parent* because the working copy itself is empty.
 $ jj bookmark create bar -r @- # `bar` now contains the previous two commits.
 # Push the bookmark to GitHub (pushes only `bar`)
-$ jj git push --allow-new
+$ jj git push --allow-new (-N)
 ```
 
 While it's possible to create a bookmark in advance and commit on top of it in a
@@ -80,7 +80,7 @@ $ # Do some more work.
 $ jj commit -m "Update tutorial"
 # Create a bookmark on the working-copy commit's parent
 $ jj bookmark create doc-update -r @-
-$ jj git push --allow-new
+$ jj git push --allow-new (-N)
 ```
 
 ## Working in a Jujutsu repository
@@ -190,7 +190,7 @@ $ GIT_DIR=.jj/repo/store/git gh issue list
 ```
 
 You can make that automatic by installing [direnv](https://direnv.net) and
-defining hooks in a `.envrc` file in the repository root to configure `$GIT_DIR`.
+defining hooks in a `.envrc` file in a repository root to configure `$GIT_DIR`.
 Just add this line into `.envrc`:
 
 ```shell
